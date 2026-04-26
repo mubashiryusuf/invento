@@ -1,0 +1,439 @@
+/* ==========================================================================
+   InvenTrack — responsive.css
+   Media queries ONLY. No component definitions here.
+   Breakpoints: < 576px | 576–767px | 768–991px | >= 992px
+   ========================================================================== */
+
+/* ----- < 576px : Mobile small -------------------------------------------- */
+
+@media (max-width: 575px) {
+
+  /* Grid layouts collapse to single column */
+  .stats-grid,
+  .form-grid,
+  .dashboard-grid,
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Filter bar children go full-width */
+  .filter-bar > *,
+  .filter-bar input,
+  .filter-bar select,
+  .filter-bar input[type="date"],
+  .filter-bar .search-wrapper {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .search-wrapper input {
+    width: 100%;
+  }
+
+  /* Hide user name in topbar to save space */
+  .topbar-user .user-name {
+    display: none;
+  }
+
+  /* Reduce main content padding */
+  .main-content {
+    padding: 16px;
+  }
+
+  /* Shrink page title */
+  .page-title {
+    font-size: 18px;
+  }
+
+  /* Login card sits flush with less padding */
+  .login-card {
+    padding: 24px 20px;
+  }
+
+  /* Reports filter full-width children */
+  .reports-filter > * {
+    flex: 1 1 100%;
+  }
+
+  /* Stat value slightly smaller */
+  .stat-value {
+    font-size: 26px;
+  }
+}
+
+/* ----- 576px – 767px : Mobile large / small tablet ----------------------- */
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+  /* Stats go 2-per-row */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Sidebar becomes off-canvas drawer */
+  .sidebar {
+    transform: translateX(-240px);
+    transition: transform 0.25s ease;
+    position: fixed;
+    z-index: 100;
+    height: 100vh;
+  }
+
+  body.sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+
+  /* Overlay behind open drawer */
+  body.sidebar-open::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 99;
+  }
+
+  /* Page wrapper fills full width */
+  .page-wrapper {
+    margin-left: 0;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .topbar-user .user-name {
+    display: none;
+  }
+}
+
+/* ----- 768px – 991px : Tablet -------------------------------------------- */
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+  /* Stats: 2-per-row */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Forms: 2-column stays */
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Dashboard bottom and charts collapse to single column */
+  .dashboard-grid,
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Sidebar is off-canvas */
+  .sidebar {
+    transform: translateX(-240px);
+    transition: transform 0.25s ease;
+    position: fixed;
+    z-index: 100;
+    height: 100vh;
+  }
+
+  body.sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+
+  /* Overlay */
+  body.sidebar-open::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 99;
+  }
+
+  /* Page wrapper fills full width */
+  .page-wrapper {
+    margin-left: 0;
+  }
+}
+
+/* ----- >= 992px : Desktop ------------------------------------------------ */
+
+@media (min-width: 992px) {
+
+  /* Stats: 4-per-row */
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Sidebar is fixed and always visible */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: none;
+    transition: none;
+    z-index: 10;
+  }
+
+  /* Main content area shifts right to make room for sidebar */
+  .page-wrapper {
+    margin-left: 240px;
+  }
+
+  /* Hamburger not needed on desktop */
+  .btn-hamburger {
+    display: none;
+  }
+
+  /* No overlay on desktop */
+  body.sidebar-open::after {
+    display: none;
+  }
+
+  /* Show user name */
+  .topbar-user .user-name {
+    display: inline;
+  }
+}
+
+/* ----- Refresh Overrides -------------------------------------------------- */
+
+@media (max-width: 991px) {
+  body.layout {
+    overflow-x: hidden;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    max-width: calc(100vw - 24px);
+    height: 100vh;
+    transform: translateX(-280px);
+    transition: transform 0.25s ease;
+    z-index: 1000;
+  }
+
+  body.sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+
+  body.sidebar-open::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.42);
+    z-index: 999;
+  }
+
+  .page-wrapper {
+    width: 100%;
+    min-width: 0;
+    margin-left: 0;
+  }
+
+  .topbar {
+    padding: 16px 20px;
+  }
+
+  .main-content {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .topbar {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    padding: 14px 14px;
+    flex-wrap: nowrap;
+  }
+
+  .main-content {
+    padding: 18px 14px;
+    overflow-x: hidden;
+  }
+
+  .topbar-title {
+    min-width: 0;
+    font-size: 20px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .topbar-user {
+    min-width: 0;
+    gap: 8px;
+    justify-self: end;
+  }
+
+  .user-avatar {
+    width: 34px;
+    height: 34px;
+    font-size: 12px;
+  }
+
+  .page-header,
+  .section-panel__header,
+  .transaction-total,
+  .form-footer,
+  .sidebar-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sidebar-footer {
+    gap: 12px;
+  }
+
+  .sidebar .btn-logout {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .page-header .btn-primary,
+  .page-header .btn-secondary,
+  .page-header .btn-sm,
+  .form-footer .btn-primary,
+  .form-footer .btn-secondary,
+  .filter-bar .btn-primary,
+  .filter-bar .btn-secondary,
+  .reports-filter .btn-primary,
+  .section-panel__header .btn-secondary,
+  .section-panel__header .btn-sm {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .dashboard-panel-grid,
+  .detail-grid,
+  .analytics-grid,
+  .record-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .login-card {
+    padding: 28px 22px;
+  }
+
+  .login-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .login-showcase {
+    padding: 28px 24px;
+  }
+
+  .login-brand-name {
+    font-size: 26px;
+  }
+
+  .transaction-total__value {
+    font-size: 22px;
+  }
+
+  .alert,
+  .stat-card,
+  .section-panel,
+  .table-container,
+  .filter-bar,
+  .reports-filter,
+  .form-card,
+  .card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .alert {
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .alert i:first-child {
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .stat-card-header,
+  .topbar-user,
+  .sidebar-user {
+    min-width: 0;
+  }
+
+  .stat-label,
+  .stat-sub,
+  .sidebar-user-name,
+  .sidebar-user-role,
+  .alert,
+  .record-summary__value {
+    overflow-wrap: anywhere;
+  }
+
+  .input-icon-wrap,
+  .input-icon-wrap > .form-control,
+  .input-icon-wrap > input:not([type="hidden"]),
+  .filter-bar input[type="text"],
+  .filter-bar input[type="search"],
+  .filter-bar input[type="date"],
+  .filter-bar select,
+  .filter-input,
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  select,
+  textarea,
+  .form-control {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .input-icon-wrap > .form-control,
+  .input-icon-wrap > input:not([type="hidden"]) {
+    min-height: 48px;
+    padding-left: 50px;
+    padding-right: 16px;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .input-icon-wrap.has-toggle > .form-control,
+  .input-icon-wrap.has-toggle > input:not([type="hidden"]) {
+    padding-right: 50px;
+  }
+
+  .input-icon-wrap > .input-icon {
+    left: 16px;
+    width: 16px;
+    font-size: 14px;
+  }
+
+  .input-icon-wrap > .input-toggle-pw {
+    right: 10px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .table-container table,
+  .transaction-table {
+    min-width: 620px;
+  }
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    width: 280px;
+  }
+
+  .page-wrapper {
+    margin-left: 280px;
+  }
+}
+
+@media (max-width: 991px) {
+  .login-shell {
+    grid-template-columns: 1fr;
+  }
+}

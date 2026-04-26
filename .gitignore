@@ -1,0 +1,39 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Dependency directories
+vendor/
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# Temp / cache / session-like local artifacts
+*.tmp
+tmp_*.txt
+tmp_*.csv
+*.cache
+
+# Local test cookies / generated scratch files
+*cookies*.txt
+
+# Database backups / dumps generated locally
+database/*backup*.sql
+database/*.bak
+database/*.dump
+
+# XAMPP / PHP runtime noise
+php_errorlog
+error_log
+
+# IDE settings
+.vscode/
+.idea/
