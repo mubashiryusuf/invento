@@ -1,0 +1,33 @@
+{
+  "name": "stockly-desktop",
+  "version": "1.0.0",
+  "description": "Electron desktop app for the Inventory Management System",
+  "main": "desktop/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "electron": "^30.5.1",
+    "mysql2": "^3.11.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.stockly.desktop",
+    "productName": "Stockly",
+    "directories": {
+      "output": "desktop-dist"
+    },
+    "files": [
+      "desktop/**/*",
+      "database/inventory_db.sql",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

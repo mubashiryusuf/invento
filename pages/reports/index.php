@@ -67,7 +67,7 @@ require_once __DIR__ . '/../../includes/sidebar.php';
             <span class="user-name"><?= sanitize($user['name']) ?></span>
         </div>
     </div>
-    <main class="main-content">
+    <main class="main-content reports-page">
         <div class="page-header">
             <h2 class="page-title">Reports &amp; Analytics</h2>
         </div>
@@ -119,7 +119,7 @@ require_once __DIR__ . '/../../includes/sidebar.php';
         </div>
 
         <!-- Sales chart -->
-        <div class="form-card">
+        <div class="form-card reports-chart-card">
             <div class="form-card-header">
                 <h3 class="form-card-title">Daily Sales Revenue</h3>
             </div>

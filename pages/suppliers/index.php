@@ -15,8 +15,9 @@ $per  = 20;
 $where  = ['1=1'];
 $params = [];
 if ($q !== '') {
-    $where[]      = '(name LIKE :q OR email LIKE :q)';
-    $params[':q'] = '%' . $q . '%';
+    $where[]           = '(name LIKE :q_name OR email LIKE :q_email)';
+    $params[':q_name'] = '%' . $q . '%';
+    $params[':q_email'] = '%' . $q . '%';
 }
 $where_sql = implode(' AND ', $where);
 
@@ -67,12 +68,15 @@ require_once __DIR__ . '/../../includes/sidebar.php';
         </div>
 
         <?php if ($is_editor): ?>
-        <div class="form-card" style="margin-bottom:16px;max-width:100%">
-            <form method="POST" action="<?= htmlspecialchars(app_url('api/import_csv.php'), ENT_QUOTES, 'UTF-8') ?>" enctype="multipart/form-data" class="filter-bar">
+        <div class="form-card import-card">
+            <form method="POST" action="<?= htmlspecialchars(app_url('api/import_csv.php'), ENT_QUOTES, 'UTF-8') ?>" enctype="multipart/form-data" class="filter-bar import-form">
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token, ENT_QUOTES, 'UTF-8') ?>">
                 <input type="hidden" name="type" value="suppliers">
-                <label style="font-size:13px;color:var(--muted)">Import Suppliers CSV</label>
-                <input type="file" name="csv_file" accept=".csv,text/csv" required>
+                <label class="import-label" for="suppliersCsvFile">
+                    <i class="fa-solid fa-file-csv"></i>
+                    Import Suppliers CSV
+                </label>
+                <input type="file" id="suppliersCsvFile" name="csv_file" accept=".csv,text/csv" required>
                 <button type="submit" class="btn-primary btn-sm">Import CSV</button>
                 <span class="field-hint">Columns: name, contact, email, address</span>
             </form>

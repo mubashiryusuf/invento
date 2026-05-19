@@ -78,8 +78,9 @@ unset($_SESSION['old_login_email']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - InvenTrack</title>
-    <link rel="stylesheet" href="<?= htmlspecialchars(app_url('assets/css/style.css'), ENT_QUOTES, 'UTF-8') ?>">
-    <link rel="stylesheet" href="<?= htmlspecialchars(app_url('assets/css/responsive.css'), ENT_QUOTES, 'UTF-8') ?>">
+    <link rel="icon" type="image/png" href="<?= htmlspecialchars(app_url('assets/images/material-management.png'), ENT_QUOTES, 'UTF-8') ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(app_url('assets/css/style.css?v=8'), ENT_QUOTES, 'UTF-8') ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(app_url('assets/css/responsive.css?v=8'), ENT_QUOTES, 'UTF-8') ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="login-body">
@@ -91,7 +92,15 @@ unset($_SESSION['old_login_email']);
                     Inventory flow, streamlined
                 </div>
                 <div class="login-brand">
-                    <i class="fa-solid fa-boxes-stacked login-brand-icon"></i>
+                    <span class="login-brand-icon" aria-hidden="true">
+                        <img
+                            src="<?= htmlspecialchars(app_url('assets/images/material-management.png'), ENT_QUOTES, 'UTF-8') ?>"
+                            alt=""
+                            class="app-logo app-logo--login"
+                            width="72"
+                            height="72"
+                        >
+                    </span>
                     <h1 class="login-brand-name">InvenTrack</h1>
                     <p class="login-tagline">Track stock, suppliers, purchases, and sales from one clean workspace.</p>
                 </div>
@@ -171,7 +180,9 @@ unset($_SESSION['old_login_email']);
 
                 <div class="login-credentials">
                     <span class="login-credentials__label">Demo access</span>
-                    <p>Admin: <strong>admin@inv.local</strong> / <strong>admin123</strong></p>
+                    <p><span>Admin</span><strong>admin@inv.local</strong><em>admin123</em></p>
+                    <p><span>Manager</span><strong>manager@inv.local</strong><em>manager123</em></p>
+                    <p><span>Staff</span><strong>staff@inv.local</strong><em>staff123</em></p>
                 </div>
             </section>
         </div>

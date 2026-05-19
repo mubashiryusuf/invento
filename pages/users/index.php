@@ -14,8 +14,9 @@ $per  = 20;
 $where  = ['1=1'];
 $params = [];
 if ($q !== '') {
-    $where[]      = '(name LIKE :q OR email LIKE :q)';
-    $params[':q'] = '%' . $q . '%';
+    $where[]           = '(name LIKE :q_name OR email LIKE :q_email)';
+    $params[':q_name'] = '%' . $q . '%';
+    $params[':q_email'] = '%' . $q . '%';
 }
 if (in_array($role, ['admin','manager','staff'], true)) {
     $where[]        = 'role = :role';

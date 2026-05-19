@@ -420,6 +420,20 @@
   .transaction-table {
     min-width: 620px;
   }
+
+  .import-form {
+    align-items: stretch;
+  }
+
+  .import-label,
+  .import-form input[type="file"],
+  .import-form .btn-primary {
+    width: 100%;
+  }
+
+  .import-form input[type="file"] {
+    max-width: none;
+  }
 }
 
 @media (min-width: 992px) {
@@ -435,5 +449,119 @@
 @media (max-width: 991px) {
   .login-shell {
     grid-template-columns: 1fr;
+  }
+
+  .reports-page .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 991px) {
+  body.login-body {
+    padding: 22px;
+  }
+
+  .login-wrapper {
+    min-height: calc(100vh - 44px);
+  }
+
+  .login-shell {
+    min-height: 0;
+    gap: 18px;
+  }
+
+  .login-showcase,
+  .login-card {
+    min-height: auto;
+  }
+
+  .login-showcase {
+    padding: 30px;
+  }
+
+  .login-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 26px;
+  }
+
+  .login-metric {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  body.login-body {
+    padding: 16px;
+  }
+
+  .login-wrapper {
+    min-height: calc(100vh - 32px);
+  }
+
+  .login-showcase {
+    padding: 24px 22px;
+    border-radius: 20px;
+  }
+
+  .login-showcase .login-brand-name {
+    font-size: 30px;
+  }
+
+  .login-showcase .login-tagline {
+    font-size: 14px;
+  }
+
+  .login-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .login-card {
+    padding: 28px 22px;
+    border-radius: 20px;
+  }
+
+  .login-card__title {
+    font-size: 26px;
+  }
+
+  .login-credentials p {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .login-credentials p em {
+    width: max-content;
+  }
+}
+
+@media (max-width: 767px) {
+  .reports-page {
+    gap: 16px;
+  }
+
+  .reports-page .reports-filter {
+    align-items: stretch;
+  }
+
+  .reports-page .reports-filter label,
+  .reports-page .reports-filter input[type="date"],
+  .reports-page .reports-filter .btn-primary {
+    width: 100%;
+  }
+
+  .reports-chart-card {
+    padding: 18px 16px;
+  }
+
+  .reports-page .chart-shell {
+    height: 260px;
+  }
+
+  .reports-page .section-panel__header {
+    padding: 18px 16px 10px;
+  }
+
+  .reports-page .section-panel__body {
+    padding: 0 14px 16px;
   }
 }

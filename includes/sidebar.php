@@ -18,7 +18,13 @@ function nav_active(string $dir, string $file, string $current_dir, string $curr
 <aside class="sidebar" id="sidebar">
     <!-- Brand -->
     <div class="sidebar-brand">
-        <i class="fa-solid fa-boxes-stacked"></i>
+        <img
+            src="<?= htmlspecialchars(app_url('assets/images/material-management.png'), ENT_QUOTES, 'UTF-8') ?>"
+            alt="InvenTrack logo"
+            class="app-logo app-logo--sidebar"
+            width="40"
+            height="40"
+        >
         <span>InvenTrack</span>
     </div>
 

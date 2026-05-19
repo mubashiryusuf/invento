@@ -17,8 +17,9 @@ $per    = 15;
 $where  = ['1=1'];
 $params = [];
 if ($q !== '') {
-    $where[]         = '(i.name LIKE :q OR i.item_code LIKE :q)';
-    $params[':q']    = '%' . $q . '%';
+    $where[]              = '(i.name LIKE :q_name OR i.item_code LIKE :q_code)';
+    $params[':q_name']    = '%' . $q . '%';
+    $params[':q_code']    = '%' . $q . '%';
 }
 if ($cat_id > 0) {
     $where[]          = 'i.category_id = :cat_id';
@@ -88,12 +89,15 @@ require_once __DIR__ . '/../../includes/sidebar.php';
         </div>
 
         <?php if ($is_editor): ?>
-        <div class="form-card" style="margin-bottom:16px;max-width:100%">
-            <form method="POST" action="<?= htmlspecialchars(app_url('api/import_csv.php'), ENT_QUOTES, 'UTF-8') ?>" enctype="multipart/form-data" class="filter-bar">
+        <div class="form-card import-card">
+            <form method="POST" action="<?= htmlspecialchars(app_url('api/import_csv.php'), ENT_QUOTES, 'UTF-8') ?>" enctype="multipart/form-data" class="filter-bar import-form">
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token, ENT_QUOTES, 'UTF-8') ?>">
                 <input type="hidden" name="type" value="items">
-                <label style="font-size:13px;color:var(--muted)">Import Items CSV</label>
-                <input type="file" name="csv_file" accept=".csv,text/csv" required>
+                <label class="import-label" for="itemsCsvFile">
+                    <i class="fa-solid fa-file-csv"></i>
+                    Import Items CSV
+                </label>
+                <input type="file" id="itemsCsvFile" name="csv_file" accept=".csv,text/csv" required>
                 <button type="submit" class="btn-primary btn-sm">Import CSV</button>
                 <span class="field-hint">Columns: item_code, name, category, unit, price, stock_qty, reorder_level, expiry_date</span>
             </form>
